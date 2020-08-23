@@ -1,0 +1,291 @@
+<!Doctype html>
+<html lang="ko">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
+
+        <!-- style -->
+        <style type="text/css">
+
+            /*--------------------------
+            * Menu Tabular solo Con CSS
+            *---------------------------*/
+            html {
+                -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                box-sizing: border-box;
+            }
+
+            *,
+            *:before,
+            *:after {
+                margin: 0;
+                padding: 0;
+                -webkit-box-sizing: inherit;
+                -moz-box-sizing: inherit;
+                box-sizing: inherit;
+            }
+
+            body {
+                background: #98DFFD;
+                font-size: 62.5%;
+                font-family: 'Open Sans', Arial, Helvetica, Sans-serif;
+            }
+
+            a {
+                color: #31a687;
+                font-weight: bold;
+                text-decoration: none;
+            }
+
+            h1 {
+                color: #FFF;
+                font-size: 3.2em;
+                font-weight: 400;
+                margin-bottom: 20px;
+                text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            /*--------------------------
+            * MENU TABS
+            ---------------------------*/
+            .menu__tabs {
+                list-style: none;
+                overflow: hidden;
+            }
+
+            .menu__tabs li {
+                float: left;
+                margin-right: 2px;
+                font-size: 1.3em;
+            }
+
+            .menu__tabs a {
+                padding: 1em;
+                background: #333b48;
+                display: inline-block;
+                color: #FFF;
+                text-decoration: none;
+                -webkit-border-radius: 4px 4px 0 0;
+                -moz-border-radius: 4px 4px 0 0;
+                border-radius: 4px 4px 0 0;
+                -webkit-transition: all 0.3s ease;
+                -o-transition: all 0.3s ease;
+                transition: all 0.3s ease;
+                -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+                box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu__tabs a:hover {
+                background: #515a68;
+            }
+
+            .menu__tabs a.active {
+                color: #333b48;
+                background: #FFF;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+            }
+
+            .menu__tabs a.active i {
+                color: #80cbb7;
+            }
+
+            .menu__tabs a i {
+                margin-right: 3px;
+                color: #aaaaaa;
+            }
+
+            /*--------------------------
+            * MENU WRAPPER
+            ---------------------------*/
+            .menu {
+                margin: 55px auto;
+                width: 80%;
+                max-width: 600px;
+                position: relative;
+            }
+
+            .menu__wrapper {
+                padding: 2em;
+                position: relative;
+                z-index: 400;
+                background: #FFF;
+                min-height: 300px;
+                -webkit-border-radius: 0 4px 4px 4px;
+                -moz-border-radius: 0 4px 4px 4px;
+                border-radius: 0 4px 4px 4px;
+            }
+
+            .menu--shadow {
+                position: absolute;
+                z-index: 300;
+                bottom: -5px;
+                height: 25px;
+                width: 100%;
+            }
+
+            .menu--shadow:after,
+            .menu--shadow:before {
+                content: '';
+                display: block;
+                width: 50%;
+                height: 25px;
+                position: absolute;
+                left: 0;
+                background: rgba(0, 0, 0, 0.2);
+                -webkit-border-radius: 25px;
+                -moz-border-radius: 25px;
+                border-radius: 25px;
+                -webkit-box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
+                -moz-box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
+                box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
+                -webkit-transform: scale(0.8) rotate(-4deg);
+                -ms-transform: scale(0.8) rotate(-4deg);
+                -o-transform: scale(0.8) rotate(-4deg);
+                transform: scale(0.8) rotate(-4deg);
+            }
+
+            .menu--shadow:after {
+                right: 0;
+                left: auto;
+                -webkit-transform: scale(0.8) rotate(4deg);
+                -ms-transform: scale(0.8) rotate(4deg);
+                -o-transform: scale(0.8) rotate(4deg);
+                transform: scale(0.8) rotate(4deg);
+            }
+
+            .menu__wrapper .menu__item {
+                line-height: 1.3;
+                color: #76716f;
+                display: none;
+            }
+
+            .menu__wrapper .menu__item.item-active {
+                display: block;
+            }
+
+            .menu__wrapper .menu__item h3 {
+                font-size: 1.8em;
+                color: #333b48;
+                border-bottom: 1px solid #d9d9d9;
+                padding-bottom: 5px;
+                margin-bottom: 12px;
+            }
+
+            .menu__wrapper .menu__item p {
+                font-size: 1.3em;
+                line-height: 1.6em;
+                color: #76716f;
+            }
+
+            @media (min-width: 768px) {
+            }
+
+        </style>
+
+        <script>
+            $(function () {
+                // Menu Tabular
+                var $menu_tabs = $(".menu__tabs li a");
+                $menu_tabs.on("click", function (e) {
+                    e.preventDefault();
+                    $menu_tabs.removeClass("active");
+                    $(this).addClass("active");
+
+                    $(".menu__item").fadeOut(300);
+                    $(this.hash).delay(300).fadeIn();
+                });
+            });
+
+        </script>
+
+    </head>
+    <body>
+
+        <!-- Contenedor principal -->
+        <div class="menu">
+            <h1>{{stockname}}</h1>
+
+            <ul class="menu__tabs">
+                <li><a class="active" href="#item-1"><i class="fa fa-star"></i> 기업 소개</a></li>
+                <li><a href="#item-2"><i class="fa fa-link"></i> 리포트</a></li>
+                <li><a href="#item-3"><i class="fa fa-photo"></i> 뉴스</a></li>
+                <li><a href="#item-4"><i class="fa fa-user"></i> 재무정보</a></li>
+            </ul>
+            <section class="menu__wrapper">
+                <article id="item-1" class="menu__item item-active">
+                    <h3>{{stockname}}</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis facere dolore, repellat
+                        ratione. Deserunt adipisci quisquam ipsam ut neque, ex non tempore saepe odit consequuntur iusto
+                        magni quas expedita perferendis consectetur eius nobis quae, commodi exercitationem dolorum
+                        fugit nihil quidem mollitia! Sint totam, unde, ullam <a href="">exercitationem</a> pariatur
+                        doloremque tenetur est. Eligendi rerum officia, doloremque amet iusto delectus quo consequuntur,
+                        nostrum dolor ullam quod fugiat, eveniet perferendis natus. Illum eum, quas delectus ducimus
+                        dicta! Rem, mollitia sequi repellat corporis, numquam eligendiLorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis facere dolore, repellat
+                        ratione. Deserunt adipisci quisquam ipsam ut neque, ex non tempore saepe odit consequuntur iusto
+                        magni quas expedita perferendis consectetur eius nobis quae, commodi exercitationem dolorum
+                        fugit nihil quidem mollitia! Sint totam, unde, ullam <a href="">exercitationem</a> pariatur
+                        doloremque tenetur est. Eligendi rerum officia, doloremque amet iusto delectus quo consequuntur,
+                        nostrum dolor ullam quod fugiat, eveniet perferendis natus. Illum eum, quas delectus ducimus
+                        dicta! Rem, mollitia sequi repellat corporis, numquam eligendi.</p>
+                </article>
+
+                <article id="item-2" class="menu__item">
+                    <h3>애널리스트 리포트</h3>
+                    <p>
+                        {% for i in report %}
+                    <a>
+                        <button class="reportName">{{i}}</button>
+                    </a>
+                    {% endfor %}</p>
+                </article>
+
+                <article id="item-3" class="menu__item">
+                    <h3>관련 뉴스 및 영상</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, dignissimos nam dolor est.
+                        Ad vel eum voluptates rerum. Harum quia dolore architecto ducimus, rem porro minus perferendis
+                        ab eveniet aliquid!</p>
+                </article>
+
+                <article id="item-4" class="menu__item">
+                    <h3>Contenido Cuatro</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, dignissimos nam dolor est.
+                        Ad vel eum voluptates rerum. Harum quia dolore architecto ducimus, rem porro minus perferendis
+                        ab eveniet aliquid!</p>
+                </article>
+
+            </section>
+            <div class="menu--shadow"></div>
+        </div>
+
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
