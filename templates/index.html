@@ -7,10 +7,15 @@
 
         <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/script.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/CSSRulePlugin.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/CSSRulePlugin.min.js"
+                type="text/javascript"></script>
+
+        <meta property="og:title" content="관련 주식 찾기"/>
+        <meta property="og:description" content="관심있는 분야의 주식 종목을 찾아줍니다"/>
+        <meta property="og:image" content="{{ url_for('static', filename='ogimage.PNG') }}"/>
 
         <!-- style -->
         <style type="text/css">
@@ -30,16 +35,16 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                width: 100vw;
-                height: 100vh;
-                background-color: #98DFFD;
+                /*width: 100vw;*/
+                /*height: 100vh;*/
+                background-color: #fbe3e8;
             }
 
             .dropdown {
-                width: 60%;
+                width: 80%;
                 margin: 0 auto;
                 padding: 2%;
-                background-color: white;
+                background-color: #ebf6f5;
                 box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.3);
                 font-family: 'Lato', sans-serif;
             }
@@ -48,12 +53,14 @@
                 padding: 2%;
                 color: lightgray;
                 background-color: #fff;
-                border: 1px solid #d6d6d6;
+                border: 1px solid transparent;
                 border-radius: 30px;
                 font-size: 1.2em;
                 text-transform: uppercase;
                 transition: .3s;
                 width: 500px;
+                height: 30px;
+                margin-top: 1%;
             }
 
             .search {
@@ -67,7 +74,7 @@
 
             .list-box {
                 margin-top: 10%;
-                margin-left: 20%;
+                margin-left: 10%;
             }
 
             .list-group {
@@ -76,33 +83,40 @@
             }
 
             .list-group-item {
-                font-size: medium;
+                font-size: 1.4em;
                 border-radius: 20px;
-                margin: 0 auto;
-                padding: 0.5%;
-                text-decoration: underline;
+                margin: 0;
+                padding: 0.5% 0.5% 0.5% 2%;
+                background-color: #ebf6f5;
+                width: 30%;
+                text-align: left;
+                height: 20px;
+
+
             }
 
             button {
-                margin-left: 1px;
-                width: 40%;
-                height: 50%;
+                margin-left: 2%;
+                width: 35%;
+                height: 30px;
                 border-radius: 30px;
                 border-color: transparent;
-                background-color: transparent;
                 font-size: 1.3em;
                 margin-top: 1%;
                 margin-bottom: 1%;
                 color: gray;
+                background-color: #fbe3e8;
             }
 
             .all-box {
                 text-align: center;
+                margin-top: 8%;
+                width: 100%;
             }
 
             .title-box {
                 text-align: center;
-                width: 80%;
+                width: 100%;
                 margin: 0 auto;
             }
 
@@ -113,50 +127,38 @@
             .title-1 {
                 margin-right: 10%;
                 margin-left: 10%;
+                color: #5cbdb9;
+            }
+
+            .title-2 {
+                color: #5cbdb9;
             }
 
             .recent-keywords {
                 text-align: left;
+                color: #5cbdb9;
             }
 
-            /* Colors */
-            /* Dimensions */
-            /* Global Styles */
-
-            .container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .foot {
+                color: lightgray;
+                margin-top: 5%;
+                margin-bottom: 0;
             }
 
-            .loader-1, .loader-2, .loader-3 {
-                position: absolute;
-                width: 35px;
-                height: 35px;
-                border: 10px solid #0d0d0d;
-                border-radius: 40px;
+            @keyframes recent-keyword-box {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px)
+                }
+                to {
+                    opacity: 3;
+                    transform: none;
+                }
             }
 
-            /* Specific Styles */
-            .container {
-                height: 100vh;
-            }
+            .list-group-item {
+                animation: recent-keyword-box 5s ease-in-out infinite 3s;
 
-            .loader-wrapper {
-                display: flex;
-                position: absolute;
-                top: calc(50% - calc(90px / 2));
-                left: calc(50% - calc(90px / 2));
-                width: 90px;
-            }
-
-            .loader-2 {
-                margin-left: 55px;
-            }
-
-            .loader-3 {
-                width: 90px;
-                margin-top: 55px;
             }
 
             @media (min-width: 768px) {
@@ -185,25 +187,30 @@
                 }
 
                 button {
-                    margin-left: 10px;
-                    width: 70px;
-                    height: 30px;
+                    margin-left: 2%;
+                    width: 20%;
+                    height: 40px;
                     border-radius: 30px;
                     border-color: transparent;
-                    background-color: transparent;
-                    font-size: medium;
-                    margin-top: 12px;
+                    font-size: 1.3em;
+                    margin-top: 1%;
+                    margin-bottom: 1%;
                     color: gray;
+                    background-color: #fbe3e8;
                 }
 
                 .list-box {
-                    margin-top: 10%;
-                    margin-left: 0;
+                    margin-top: 5%;
+                    margin-left: 24%;
                 }
 
                 .list-group {
-                    width: 100%;
+                    width: 50%;
                     text-align: left;
+                }
+
+                .list-group-item {
+                    font-size: 1.1em;
                 }
 
                 h3 {
@@ -211,7 +218,12 @@
                 }
 
                 .all-box {
-                    margin: 200px 0px;
+                    margin-top: 3%;
+
+                }
+
+                .recent-keyword-box {
+                    font-size: 1.2em;
                 }
             }
         </style>
@@ -219,6 +231,8 @@
             $(document).ready(function () {
                 // index.html 로드가 완료되면 자동으로 showRank() 함수를 호출합니다.
                 //showRank(); showRank는 키워드 검색순위 1~10위 호출하는 함수
+
+
             });
 
             function keywordResearch() {
@@ -236,71 +250,16 @@
                     return;
                 }
 
-
-                // 3. POST /keyword 에 저장을 요청합니다.
-                // $.ajax({
-                //     type: 'POST',
-                //     url: '/keywords',
-                //     data: {keyword_give: keyword},
-                //     success: function (response) {
-                //         }
-                // });
+                // 3. GET /keyword 에 저장을 요청합니다.
+                $.ajax({
+                    type: 'GET',
+                    url: '/keywords',
+                    success: function (response) {
+                        window.location.href = '/keywords?q=' + keyword
+                        console.log('data')
+                    }
+                });
             }
-
-            const loader = gsap.timeline();
-            const duration = 0.25;
-            const delay = 1;
-
-            loader
-                .to(".loader-3", duration, {width: 35})
-                .set(".loader-2", {rotate: 90, transformOrigin: "45px 45px", marginLeft: 0})
-                .to(".loader-2", duration, {width: 90})
-                .set(".loader-2", {transformOrigin: "72px 17px", rotate: 270})
-                .to(".loader-2", duration, {width: 35})
-                .to(".loader-1", duration, {width: 90})
-                .set(".loader-1", {transformOrigin: "45px 17.5px", rotate: 180})
-                .to(".loader-1", duration, {width: 35})
-                .set(".loader-3", {transformOrigin: "45px 45px", rotate: 270, marginTop: 0})
-                .to(".loader-3", duration, {width: 90})
-                .set(".loader-3", {transformOrigin: "17.5px 17.5px", rotate: 90})
-                .to(".loader-3", duration, {width: 35})
-                .set(".loader-2", {transformOrigin: "45px 45px", rotate: 180})
-                .to(".loader-2", duration, {width: 90})
-                .set(".loader-2", {transformOrigin: "bottom center", marginTop: 20})
-                .to(".loader-2", duration, {width: 35})
-                .set(".loader-1", {transformOrigin: "45px 45px", rotate: 90})
-                .to(".loader-1", duration, {width: 90})
-                .set(".loader-1", {transformOrigin: "72px 17.5px", rotate: 270})
-                .to(".loader-1", duration, {width: 35})
-                .set(".loader-3", {rotate: 360})
-                .to(".loader-3", duration, {width: 90})
-                .set(".loader-3", {transformOrigin: "45px 17.5px", rotate: 180})
-                .to(".loader-3", duration, {width: 35})
-                .set(".loader-2", {transformOrigin: "45px 45px", rotate: 270, marginTop: 0})
-                .to(".loader-2", duration, {width: 90})
-                .set(".loader-2", {transformOrigin: "17.5px 17.5px", rotate: 90})
-                .to(".loader-2", duration, {width: 35})
-                .set(".loader-1", {transformOrigin: "45px 45px", rotate: 180})
-                .to(".loader-1", duration, {width: 90})
-                .set(".loader-1", {transformOrigin: "bottom center", marginTop: 20})
-                .to(".loader-1", duration, {width: 35})
-                .set(".loader-3", {transformOrigin: "45px 45px", rotate: 90})
-                .to(".loader-3", duration, {width: 90})
-                .set(".loader-3", {transformOrigin: "72px 17.5px", rotate: 270})
-                .to(".loader-3", duration, {width: 35})
-                .set(".loader-2", {transformOrigin: "45px 17.5px", rotate: 0})
-                .to(".loader-2", duration, {width: 90})
-                .set(".loader-2", {rotate: 180})
-                .to(".loader-2", duration, {width: 35})
-                .set(".loader-1", {transformOrigin: "45px 45px", rotate: 270, marginTop: 0})
-                .to(".loader-1", duration, {width: 90})
-                .set(".loader-1", {transformOrigin: "17.5px 17.5px", rotate: 90})
-                .to(".loader-1", duration, {width: 35})
-                .set(".loader-3", {transformOrigin: "45px 17.5px", rotate: 180, marginTop: 55})
-                .to(".loader-3", duration, {width: 90})
-                .set(".loader-2", {marginLeft: 55})
-                .delay(delay)
-                .repeat(-1);
 
         </script>
     </head>
@@ -314,26 +273,21 @@
 
             <div class="dropdown">
                 <div class="search">
-                    <form action="/keywords" method="POST">
-                        <input name="keyword_give" id="inputKeyword" type="text" placeholder="검색어를 입력해주세요.">
-                        <button type="submit" onclick="keywordResearch()">검색</button>
-                    </form>
+                    <!--                    <form action="/keywords" method="POST">-->
+                    <input name="keyword_give" id="inputKeyword" type="text" placeholder="검색어를 입력해주세요.">
+                    <button type="submit" onclick="keywordResearch()">검색</button>
+                    <!--                    </form>-->
                 </div>
             </div>
             <div class="list-box">
                 <h2 class="recent-keywords">최근 검색어</h2>
-                <ul class="list-group">
-                    <li class="list-group-item">1 #키워드</li>
-                    <li class="list-group-item">2 #키워드</li>
-                    <li class="list-group-item">3 #키워드</li>
-                    <li class="list-group-item">4 #키워드</li>
-                    <li class="list-group-item">6 #키워드</li>
-                    <li class="list-group-item">7 #키워드</li>
-                    <li class="list-group-item">8 #키워드</li>
-                    <li class="list-group-item">9 #키워드</li>
-                    <li class="list-group-item">10 #키워드</li>
-
-                </ul>
+                {% for n,i in recent_list %}
+                <div class="recent-keyword-box">
+                    <ul class="list-group">
+                        <li class="list-group-item">{{n}}위 {{i}}</li>
+                    </ul>
+                </div>
+                {% endfor %}
             </div>
             <!-------- Design By Olan Frolov ------
             https://dribbble.com/shots/5845853-Loader-XLVII-->
@@ -343,6 +297,10 @@
                     <div class="loader-2"></div>
                     <div class="loader-3"></div>
                 </div>
+            </div>
+
+            <div>
+                <h6 class="foot">오류를 발견하시면 withyouall20@gmail.com으로 부탁드립니다!</h6>
             </div>
 
         </div>

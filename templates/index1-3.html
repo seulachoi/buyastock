@@ -20,6 +20,10 @@
 
         <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
 
+        <meta property="og:title" content="관련 주식 찾기"/>
+        <meta property="og:description" content="관심있는 분야의 주식 종목을 찾아줍니다"/>
+        <meta property="og:image" content="{{ url_for('static', filename='ogimage.PNG') }}"/>
+
         <!-- style -->
         <style type="text/css">
 
@@ -43,13 +47,13 @@
             }
 
             body {
-                background: #98DFFD;
+                background: #fbe3e8;
                 font-size: 62.5%;
                 font-family: 'Open Sans', Arial, Helvetica, Sans-serif;
             }
 
             a {
-                color: #31a687;
+                color: #5cbdb9;
                 font-weight: bold;
                 text-decoration: none;
             }
@@ -57,11 +61,23 @@
             h1 {
                 color: #FFF;
                 font-size: 3.2em;
-                font-weight: 400;
                 margin-bottom: 20px;
                 text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+                font-weight: bold;
             }
 
+            .basic-info-list {
+                margin-bottom: 2%;
+            }
+
+            .goback {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            .stockname {
+                margin-bottom: 3%;
+            }
             /*--------------------------
             * MENU TABS
             ---------------------------*/
@@ -106,7 +122,7 @@
             }
 
             .menu__tabs a.active i {
-                color: #80cbb7;
+                color: #ffa;
             }
 
             .menu__tabs a i {
@@ -186,6 +202,11 @@
             .menu__wrapper .menu__item h3 {
                 font-size: 1.8em;
                 color: #333b48;
+            }
+
+            .menu__wrapper .menu__item h6 {
+                font-size: 0.8em;
+                color: lightgray;
                 border-bottom: 1px solid #d9d9d9;
                 padding-bottom: 5px;
                 margin-bottom: 12px;
@@ -195,6 +216,59 @@
                 font-size: 1.3em;
                 line-height: 1.6em;
                 color: #76716f;
+            }
+
+            .title-item {
+                background-color: transparent;
+                text-align: left;
+                border: none;
+
+            }
+
+            .report-box {
+                border: outset;
+                margin-bottom: 3px;
+            }
+
+            .link-item {
+                width: 100%;
+                display: block;
+            }
+
+            .date-item {
+                display: inline;
+            }
+
+            .price-item {
+                display: inline;
+                margin-left: 50%;
+                text-align: right;
+            }
+
+            .youtube-box {
+                display: flex;
+                margin: 1%;
+                border-bottom: inset;
+            }
+
+            .youtube-thumbnail {
+                display: flex;
+            }
+
+            .youtube-title {
+                font-size: inherit;
+                font-weight: bold;
+                padding-top: 5%;
+                padding-left: 2%;
+            }
+
+            .youtube-text-box {
+                display: block;
+                width: 100%;
+            }
+
+            .youtube-click-text, .youtube-date-text {
+                text-align: right;
             }
 
             @media (min-width: 768px) {
@@ -216,62 +290,86 @@
                 });
             });
 
+            $(document).ready(function () {
+                var noReport = '{{report[0]}}'
+                //최근 리포트 없으면 id=#report-sub-box (날짜~리포트~증권사까지) 숨기고, 최근리포트없다는 HTML추가
+                if (noReport == "최근 리포트가 없습니다") {
+                    $("<div class=\"report-box\" id=\"report-box\" style=\"border: none;\">").html("최근 리포트가 없습니다").appendTo(".report-box");
+                    $('#report-sub-box').css('display', 'none')
+                    $('#report-box').css('border', 'none');
+                }
+            });
+
         </script>
 
     </head>
     <body>
 
         <!-- Contenedor principal -->
+
         <div class="menu">
-            <h1>{{stockname}}</h1>
+            <a href="/" class="goback">메인으로</a>
+            <h1>{{stockname}}({{code}})</h1>
 
             <ul class="menu__tabs">
                 <li><a class="active" href="#item-1"><i class="fa fa-star"></i> 기업 소개</a></li>
                 <li><a href="#item-2"><i class="fa fa-link"></i> 리포트</a></li>
-                <li><a href="#item-3"><i class="fa fa-photo"></i> 뉴스</a></li>
-                <li><a href="#item-4"><i class="fa fa-user"></i> 재무정보</a></li>
+                <li><a href="#item-3"><i class="fa fa-photo"></i> Youtube</a></li>
+                <!--                <li><a href="#item-4"><i class="fa fa-user"></i> 재무정보</a></li>-->
             </ul>
             <section class="menu__wrapper">
                 <article id="item-1" class="menu__item item-active">
-                    <h3>{{stockname}}</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis facere dolore, repellat
-                        ratione. Deserunt adipisci quisquam ipsam ut neque, ex non tempore saepe odit consequuntur iusto
-                        magni quas expedita perferendis consectetur eius nobis quae, commodi exercitationem dolorum
-                        fugit nihil quidem mollitia! Sint totam, unde, ullam <a href="">exercitationem</a> pariatur
-                        doloremque tenetur est. Eligendi rerum officia, doloremque amet iusto delectus quo consequuntur,
-                        nostrum dolor ullam quod fugiat, eveniet perferendis natus. Illum eum, quas delectus ducimus
-                        dicta! Rem, mollitia sequi repellat corporis, numquam eligendiLorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis facere dolore, repellat
-                        ratione. Deserunt adipisci quisquam ipsam ut neque, ex non tempore saepe odit consequuntur iusto
-                        magni quas expedita perferendis consectetur eius nobis quae, commodi exercitationem dolorum
-                        fugit nihil quidem mollitia! Sint totam, unde, ullam <a href="">exercitationem</a> pariatur
-                        doloremque tenetur est. Eligendi rerum officia, doloremque amet iusto delectus quo consequuntur,
-                        nostrum dolor ullam quod fugiat, eveniet perferendis natus. Illum eum, quas delectus ducimus
-                        dicta! Rem, mollitia sequi repellat corporis, numquam eligendi.</p>
+                    <h3 class="stockname">{{stockname}}</h3>
+                    {% for i in infolist %}
+                    <ul class="basic-info-list">
+                        <li>{{i}}</li>
+                    </ul>
+                    {% endfor %}
+                    <h6>출처 : Naver, 에프엔가이드</h6>
                 </article>
 
                 <article id="item-2" class="menu__item">
                     <h3>애널리스트 리포트</h3>
-                    <p>
-                        {% for i in report %}
-                    <a>
-                        <button class="reportName">{{i}}</button>
-                    </a>
-                    {% endfor %}</p>
+                    <h6>제목을 클릭하면 리서치 자료를 볼 수 있습니다 (최근 3개월)</h6>
+                    <!--  서버:한경리서치 크롤링 데이터 받아오고, 변수 추가하는 부분: {{변수}} -->
+                    {% for u,w,v,x,y,z in mylist %}
+                    <div class="report-box" id="report-box">
+                        <div class="report-sub-box" id="report-sub-box">
+                            <h4 class="date-item">{{u}}</h4>
+                            <h4 class="price-item">목표가: {{w}}원</h4>
+                            <a href="{{v}}" target="_blank" class="link-item">
+                                <tr class="title-item">{{x}}</tr>
+                                <img src="{{url_for('static', filename='pdf.png')}}" border="0" width="10"
+                                     height="10"/>
+                            </a>
+                            <h4 class="company-item">{{y}} {{z}}</h4>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </article>
 
                 <article id="item-3" class="menu__item">
-                    <h3>관련 뉴스 및 영상</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, dignissimos nam dolor est.
-                        Ad vel eum voluptates rerum. Harum quia dolore architecto ducimus, rem porro minus perferendis
-                        ab eveniet aliquid!</p>
+                    <h3>관련 Youtube 영상</h3>
+                    <!--  서버:한경리서치 크롤링 데이터 받아오고, 변수 추가하는 부분: {{변수}} -->
+                    {% for a,b,c,d,e in youtubelist %}
+                    <div class="youtube-box">
+                        <a href="{{b}}" class="youtube-thumbnail" target="_blank">
+                            <img src={{a}}"
+                                 , width="120" , height="100"/>
+                        </a>
+                        <div class="youtube-text-box">
+                            <h4 class="youtube-title">{{c}}</h4>
+                            <h5 class="youtube-click-text">{{d}}</h5>
+                            <h5 class="youtube-date-text">{{e}}</h5>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </article>
 
-                <article id="item-4" class="menu__item">
-                    <h3>Contenido Cuatro</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, dignissimos nam dolor est.
-                        Ad vel eum voluptates rerum. Harum quia dolore architecto ducimus, rem porro minus perferendis
-                        ab eveniet aliquid!</p>
-                </article>
+                <!--                <article id="item-4" class="menu__item">-->
+                <!--                    <h3>Contenido Cuatro</h3>-->
+                <!--                    <p>Lorem </p>-->
+                <!--                </article>-->
 
             </section>
             <div class="menu--shadow"></div>
